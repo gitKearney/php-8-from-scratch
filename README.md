@@ -18,7 +18,7 @@ latest version rather than waiting for the distro to release it
  * [XDebug](#xdebug)
 
 
-# <a href="packages"></a>Download the necessary packages
+# <a name="packages"></a>Download the necessary packages
 This is tailored for Laravel, Symfony, Drupal - some of the these packages *probably* won't be necessary but, why not just get everything, eh?
 
     apt-get install build-essential pkg-config \
@@ -26,20 +26,20 @@ This is tailored for Laravel, Symfony, Drupal - some of the these packages *prob
       libcurl4-openssl-dev libonig-dev libsodium-dev \
       libargon2-dev zip libgd-dev libicu-dev
 
-# <a href="add-to-path"></a>Add PHP to path
+# <a name="add-to-path"></a>Add PHP to path
 Add PHP 8 to our path. Edit your *.bashrc* file and add
 
     if [ -d "$HOME/bin/php8/bin" ] ; then
       PATH="$HOME/bin/php8/bin:$PATH"
     fi
 
-# <a href="download-php"></a>Download PHP 8
+# <a name="download-php"></a>Download PHP 8
 Let's grab the latest PHP 8 version
 
     wget https://www.php.net/distributions/php-8.1.9.tar.gz -O php-8.1.9.tar.gz
     tar xf php-8.1.9.tar.gz
     
-# <a href="build"></a>Create A Build Script
+# <a name="build"></a>Create A Build Script
 `cd php-8.1.8` and create the following file *build_php.sh*
 
     #!/bin/sh
@@ -96,20 +96,20 @@ Then you need to add the following lines to the configure script
     # if working with Postgres
     --with-pdo-pgsql
 
-# <a href="compile-php"></a>Compile PHP
+# <a name="compile-php"></a>Compile PHP
 Now that our build script it done (you should be in the php8.1.9 dir)
 
  * sh build_php.sh
  * make -j 2
  * make install
 
-# <a href="php-ini"></a>Setup the INI file
+# <a name="php-ini"></a>Setup the INI file
 Copy the file *php.ini-development* from the PHP 8.1.9 directory to our path
 
     # run from the php-8.1.9 directory
     cp php.ini-development ~/bin/php8/lib/php.ini
 
-# <a href="php-composer"></a>Download composer
+# <a name="php-composer"></a>Download composer
 
     cd ~/bin
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -118,7 +118,7 @@ Copy the file *php.ini-development* from the PHP 8.1.9 directory to our path
     unlink composer-setup.php
     
 
-# <a href="php-fpm"></a>Configure PHP-FPM
+# <a name="php-fpm"></a>Configure PHP-FPM
 
 ## Create PHP-FPM config file
 
@@ -136,13 +136,13 @@ nGinx and lighttpd are 2 good options. both are lightweight
 and production ready. The 3rd option is running the PHP web-server `php -S`. This is a good option actually, but isn't
 production ready
 
-## <a href="php-s"></a>PHP -S
+## <a name="php-s"></a>PHP -S
 This is definitely the simplest and doesn't even require PHP-FPM
 
     cd /path/to/php/code
     php -S localhost:8080 -t /path/to/index.php
 
-## <a href="php-nginx"></a>nGinx
+## <a name="php-nginx"></a>nGinx
 
     sudo apt-get install nginx
 
@@ -188,7 +188,7 @@ Enable our new devel site
 
     sudo systemctl reload nginx.service # reload nginx
 
-## <a href="php-lighttpd"></a>lighttpd
+## <a name="php-lighttpd"></a>lighttpd
 This is a lightweight extremely fast webserver capable of serving 10,000 requests. With docker becoming more popular,
 Lighttpd makes more sense than nginx (which performs better)
 with multicores
