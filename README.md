@@ -206,11 +206,6 @@ Edit the file `/etc/lighttpd/conf-available/15-fastcgi-php.conf`
             ))
         )
 
-Enable PHP-FPM
-
-    cd /etc/lighttpd/conf-enabled
-    sudo ln -s /etc/lighttpd/conf-available/15-fastcgi-php.conf
-
 Edit the file `/etc/lighttpd/lighttpd.conf`
 
     # server.document-root = "/var/www/html"
