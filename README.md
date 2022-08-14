@@ -108,6 +108,11 @@ Copy the file *php.ini-development* from the PHP 8.1.9 directory to our path
 
     # run from the php-8.1.9 directory
     cp php.ini-development ~/bin/php8/lib/php.ini
+    
+Make the following changes to the *php.ini* file
+
+ * set the timezone: `date.timezone=America/Chicago` (see https://www.php.net/manual/en/timezones.php)
+ * fix CGI: `cgi.fix_pathinfo=1`
 
 # <a name="php-composer"></a>Download composer
 
@@ -215,6 +220,14 @@ Enable Fast CGI
 
     sudo lighttpd-enable-mod fastcgi
     sudo lighttpd-enable-mod fastcgi-php
+    
+ Enable rewrite to remove `index.php` from URL
+ 
+    sudo lighttpd-enable-mod rewrite
+    
+ and edit the file `/etc/lighttpd/lighttpd.conf` and add the line
+ 
+     url.rewrite-if-not-file = ( "" => "/index.php${url.path}${qsa}" )
     
 Now, restart lighttpd
 
