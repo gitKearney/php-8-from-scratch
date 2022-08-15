@@ -24,7 +24,7 @@ This is tailored for Laravel, Symfony, Drupal - some of the these packages *prob
     apt-get install build-essential pkg-config \
       libxml2-dev libssl-dev libsqlite3-dev libzip-dev \
       libcurl4-openssl-dev libonig-dev libsodium-dev \
-      libargon2-dev zip libgd-dev libicu-dev
+      libargon2-dev zip libgd-dev libicu-dev autoconf
 
 # <a name="add-to-path"></a>Add PHP to path
 Add PHP 8 to our path. Edit your *.bashrc* file and add
